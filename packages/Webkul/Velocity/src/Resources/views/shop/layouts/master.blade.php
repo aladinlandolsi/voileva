@@ -53,6 +53,32 @@
     </head>
 
     <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif>
+	<!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v7.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/fr_FR/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="104019437995798"
+  theme_color="#ff5ca1"
+  logged_in_greeting="Bonjour je m'appele Eva comment puis je vous aider ?"
+  logged_out_greeting="Bonjour je m'appele Eva comment puis je vous aider ?">
+      </div>
         {!! view_render_event('bagisto.shop.layout.body.before') !!}
 
         @include('shop::UI.particals')
